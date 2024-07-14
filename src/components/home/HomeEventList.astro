@@ -1,25 +1,30 @@
 ---
 import dayjs from "dayjs";
-import {gte} from 'drizzle-orm';
-import {db, Event} from "astro:db";
+import { gte } from "drizzle-orm";
+import { db, Event } from "astro:db";
 import HomeEventCard from "./HomeEventCard.astro";
 
-const today = dayjs().startOf('day');
+const today = dayjs().startOf("day");
 
-const events = await db.select().from(Event).where(gte(Event.date, today.toISOString()));
+const events = await db
+  .select()
+  .from(Event)
+  .where(gte(Event.date, today.toISOString()));
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 w-full justify-between gap-5">
-    {
-        events.map((event) => (
-                <HomeEventCard
-                        title={event.title}
-                        image={event.image}
-                        location={event.location}
-                        time={event.time}
-                        date={event.date}
-                        href={"events/" + event.id}
-                />
-        ))
-    }
+<div
+  class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 w-full justify-between gap-5"
+>
+  {
+    events.map((event) => (
+      <HomeEventCard
+        title={event.title}
+        image={event.image}
+        location={event.location}
+        time={event.time}
+        date={event.date}
+        href={"events/" + event.id}
+      />
+    ))
+  }
 </div>
