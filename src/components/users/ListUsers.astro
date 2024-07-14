@@ -1,0 +1,25 @@
+---
+import Table from "../shared/Table.astro";
+const users = [
+    {
+        id: 1,
+        name: 'John Doe',
+        email: 'john@example.com',
+        description: 'Attending',
+        option: 'Option 1',
+        registered_at: '2024-07-03',
+        present: true
+    },
+    {
+        id: 2,
+        name: 'Jane Smith',
+        email: 'jane@example.com',
+        description: 'Not Attending',
+        option: 'Option 2',
+        registered_at: '2024-07-04',
+        present: false
+    },
+];
+---
+
+<Table users={users}/>

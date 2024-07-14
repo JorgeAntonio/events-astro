@@ -1,0 +1,15 @@
+---
+import ListEvents from "../../components/events/ListEvents.astro";
+import EventsBanner from "../../components/events/EventsBanner.astro";
+import PageTitle from "../../components/shared/PageTitle.astro";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+---
+
+<HomeLayout title="Events">
+    <EventsBanner title="Events" image="/event-banner.webp"/>
+    <main class="max-w-screen-2xl mx-auto">
+        <PageTitle title="Next events" subtitle="Check out our upcoming events" label="Create new event"
+                   href="/events/new"/>
+        <ListEvents/>
+    </main>
+</HomeLayout>

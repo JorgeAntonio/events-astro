@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ListUsers from "../../components/users/ListUsers.astro";
+---
+
+<Layout title="Users">
+    <div class="flex justify-between items-center">
+        <div class="py-6">
+            <h1 class="text-2xl font-bold">Users</h1>
+            <p>
+                Here you can find all the users that are happening in the community.
+            </p>
+        </div>
+    </div>
+    <ListUsers/>
+</Layout>

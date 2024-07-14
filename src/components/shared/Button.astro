@@ -1,0 +1,17 @@
+---
+interface Props {
+    label: string;
+    type: string;
+    disabled?: boolean;
+}
+
+const {label, type, disabled} = Astro.props;
+---
+
+<button
+        disabled={disabled}
+        type={type}
+        class="bg-primary hover:bg-gray-800 text-white font-bold py-2 px-4"
+>
+    {label}
+</button>

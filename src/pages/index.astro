@@ -1,0 +1,23 @@
+---
+import HomeBanner from "../components/home/HomeBanner.astro";
+import HomeLayout from "../layouts/HomeLayout.astro";
+import HomeEventList from "../components/home/HomeEventList.astro";
+---
+
+<HomeLayout title="Home">
+    <HomeBanner/>
+    <main class="max-w-screen-2xl mx-auto">
+        <section class="py-12 flex flex-col gap-12">
+            <h2 class="text-3xl uppercase font-bold tracking-tight dark:text-white">
+                Welcome to our community
+            </h2>
+            <div>
+                <div class="flex justify-between pb-5">
+                    <h3 class="text-2xl font-bold tracking-tight dark:text-white">Upcoming events</h3>
+                    <a href="/events" class="text-lg font-bold text-primary hover:underline">See all events</a>
+                </div>
+                <HomeEventList />
+            </div>
+        </section>
+    </main>
+</HomeLayout>
