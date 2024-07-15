@@ -1,8 +1,11 @@
 ---
+import HomeLayout from "@/layouts/HomeLayout.astro";
 import RegisterUserForm from "../../components/users/RegisterUserForm.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="New Form">
-    <RegisterUserForm/>
-</Layout>
+<HomeLayout title="New Form">
+  <main class="max-w-screen-2xl mx-auto">
+    <RegisterUserForm />
+  </main>
+</HomeLayout>

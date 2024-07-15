@@ -7,59 +7,90 @@ import Button from "../shared/Button.astro";
 
 import { db, Form } from "astro:db";
 
-if (Astro.request.method == 'POST') {
-    try {
-        const data = await Astro.request.formData();
-        const name = data.get('name');
-        const lastname = data.get('lastname');
-        const email = data.get('email');
-        const description = data.get('description');
-        const option = data.get('option');
-        const id = name?.toString().toLowerCase().replace(/\s/g, "-") + "-" + Date.now();
-        const published_at = new Date().toISOString();
+if (Astro.request.method == "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const lastname = data.get("lastname");
+    const email = data.get("email");
+    const description = data.get("description");
+    const option = data.get("option");
+    const id =
+      name?.toString().toLowerCase().replace(/\s/g, "-") + "-" + Date.now();
+    const published_at = new Date().toISOString();
 
-        if (typeof name === 'string' && name.length > 0 &&
-            typeof lastname === 'string' && lastname.length > 0 &&
-            typeof email === 'string' && email.length > 0 &&
-            typeof description === 'string' && description.length > 0 &&
-            typeof option === 'string' && option.length > 0 &&
-            typeof published_at === 'string' && published_at.length > 0 &&
-            typeof id === 'string') {
-            await db.insert(Form).values({
-                id,
-                name,
-                lastname,
-                email,
-                description,
-                option,
-                published_at
-            });
+    if (
+      typeof name === "string" &&
+      name.length > 0 &&
+      typeof lastname === "string" &&
+      lastname.length > 0 &&
+      typeof email === "string" &&
+      email.length > 0 &&
+      typeof description === "string" &&
+      description.length > 0 &&
+      typeof option === "string" &&
+      option.length > 0 &&
+      typeof published_at === "string" &&
+      published_at.length > 0 &&
+      typeof id === "string"
+    ) {
+      await db.insert(Form).values({
+        id,
+        name,
+        lastname,
+        email,
+        description,
+        option,
+        published_at,
+      });
 
-            Astro.response.status = 201;
-            Astro.response.statusText = 'Form created';
-        } else {
-            Astro.response.status = 400;
-            Astro.response.statusText = 'Missing required fields';
-        }
-    } catch (error) {
-        console.error((error as any).errors);
+      Astro.response.status = 201;
+      Astro.response.statusText = "Form created";
+    } else {
+      Astro.response.status = 400;
+      Astro.response.statusText = "Missing required fields";
     }
+  } catch (error) {
+    console.error((error as any).errors);
+  }
 }
-
 ---
 
 <div class="py-6">
-    <SectionTitle title="New Form"/>
-    <p>Create a new form to collect data from your users</p>
-    <form class="max-w-md mx py-6" method="post">
-        <Input label="Name" name="name" type="text" placeholder=" " required={true}/>
-        <Input label="Lastname" name="lastname" type="text" placeholder=" " required={true}/>
-        <Input label="Email" name="email" type="email" placeholder=" " required={true}/>
-        <Textarea label="Describe why you want to participate" placeholder="Write your thoughts here..."
-                  name="description" required={false}/>
-        <Select label="Select an option" name="option"/>
+  <SectionTitle title="New Form" />
+  <p class="dark:text-gray-400">
+    Create a new form to collect data from your users
+  </p>
+  <form class="max-w-md mx py-6" method="post">
+    <Input
+      label="Name"
+      name="name"
+      type="text"
+      placeholder=" "
+      required={true}
+    />
+    <Input
+      label="Lastname"
+      name="lastname"
+      type="text"
+      placeholder=" "
+      required={true}
+    />
+    <Input
+      label="Email"
+      name="email"
+      type="email"
+      placeholder=" "
+      required={true}
+    />
+    <Textarea
+      label="Describe why you want to participate"
+      placeholder="Write your thoughts here..."
+      name="description"
+      required={false}
+    />
+    <Select label="Select an option" name="option" />
 
-        <Button type="submit" label="Create form"/>
-
-    </form>
+    <Button type="submit" label="Create form" />
+  </form>
 </div>

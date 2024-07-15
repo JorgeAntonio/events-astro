@@ -22,8 +22,11 @@ const { title } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-  <Navbar />
-    <main transition:animate="fade" class="max-w-screen-2xl mx-auto pb-8">
+    <Navbar />
+    <main
+      transition:animate="fade"
+      class="max-w-screen-2xl mx-auto pb-8 bg-gray-100 dark:bg-gray-900"
+    >
       <slot />
     </main>
     <Footer />
