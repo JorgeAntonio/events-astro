@@ -1,26 +1,33 @@
 ---
 interface Props {
-    title: string;
-    image: string;
-    location: string;
-    time: string;
-    date: string;
-    href: string;
+  title: string;
+  image: string;
+  location: string;
+  time: string;
+  date: string;
+  href: string;
 }
 
-const {href, title, location, image, time, date} = Astro.props;
+const { href, title, location, image, time, date } = Astro.props;
 ---
 
-
-<div class="w-full h-[450px] max-w-sm bg-primary relative hover:transition-all duration-300 hover:scale-y-105">
-    <a href={href} class="block w-full h-full relative">
-        <img class="w-full h-full object-cover opacity-25" src={image} alt={title}/>
-        <div class="flex items-center justify-center flex-col absolute inset-0">
-            <h1 class="text-3xl text-white font-bold uppercase text-center">
-                {title} <br/>
-                {date} - {time} <br/>
-                {location}
-            </h1>
-        </div>
-    </a>
+<div
+  class="w-full h-[450px] max-w-sm bg-gray-800 hover:-translate-y-1 hover:shadow-lg transition-transform duration-300 animate-blurred-fade-in"
+>
+  <a href={href} class="block w-full h-full relative">
+    <img
+      class="w-full h-full object-cover opacity-60 hover:animate-zoom-in"
+      src={image}
+      alt={title}
+    />
+    <div class="flex items-center justify-center flex-col absolute inset-0">
+      <h1 class="text-3xl text-white font-bold uppercase text-center">
+        {title}
+        <br />
+        {date} - {time}
+        <br />
+        {location}
+      </h1>
+    </div>
+  </a>
 </div>
