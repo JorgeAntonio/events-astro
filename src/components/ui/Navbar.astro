@@ -1,6 +1,7 @@
 ---
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import UserAvatar from "./UserAvatar.astro";
+import ThemeToggle from "../shared/ThemeToggle.astro";
 
 const links = [
   { href: "/", text: "Home" },
@@ -15,7 +16,7 @@ const pathname = new URL(Astro.request.url).pathname;
   <div
     class="max-w-screen-2xl mx-auto flex justify-between py-4 dark:bg-gray-800 bg-white"
   >
-    <Astronav closeOnClick class="w-full px-0" />
+    <Astronav closeOnClick />
     <div class="flex w-full lg:w-auto justify-between">
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/favicon.svg" class="h-8" alt="Flowbite Logo" />
