@@ -1,34 +1,33 @@
 ---
-import {db, Event, like} from "astro:db";
-import Layout from "../../../layouts/Layout.astro";
+import { db, Event, like } from "astro:db";
 import DateBar from "../../../components/events/DateBar.astro";
-import PageTitle from "../../../components/shared/PageTitle.astro";
+import HomeLayout from "@/layouts/HomeLayout.astro";
 
-const {slug} = Astro.params;
+const { slug } = Astro.params;
 
 const events = await db
-    .select()
-    .from(Event)
-    .where(like(Event.id, slug ?? ""));
+  .select()
+  .from(Event)
+  .where(like(Event.id, slug ?? ""));
 
 const event = events[0];
 ---
 
-<Layout title="Event detail">
-    <section>
-        <div class="flex gap-4">
-            <img src={event.image} alt="" class="h-[600px] w-full bg-cover"/>
-            <DateBar event={event}/>
-        </div>
-        <div>
-            <h2 class="py-2 text-3xl font-bold tracking-tight dark:text-white">
-                {event.title}
-            </h2>
-            <p
-                    class="text-base text-balance max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400"
-            >
-                {event.description}
-            </p>
-        </div>
-    </section>
-</Layout>
+<HomeLayout title="Event detail">
+  <section class="max-w-screen-2xl mx-auto flex flex-col gap-4">
+    <div class="flex gap-4">
+      <img src={event.image} alt="" class="h-[600px] w-full bg-cover" />
+      <DateBar event={event} />
+    </div>
+    <div>
+      <h2 class="py-2 text-3xl font-bold tracking-tight dark:text-white">
+        {event.title}
+      </h2>
+      <p
+        class="text-base text-balance max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400"
+      >
+        {event.description}
+      </p>
+    </div>
+  </section>
+</HomeLayout>

@@ -1,11 +1,7 @@
-# Astro Events
+# Events Astro
 
 This is a web application developed with Astro for managing events. It allows users to view a list of upcoming events and register for them. The project is built using Astro, Astro DB, and Tailwind CSS.
 
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
 
 ## Features
 
@@ -24,11 +20,11 @@ To get started with the project, follow these steps:
 
 1. Clone the repository:
 ```sh
-git clone https://github.com/yourusername/astro-attendant.git
+git clone https://github.com/JorgeAntonio/events-astro.git
 ```
 2. Change the directory:
 ```sh
-cd astro-attendant.git
+cd events-astro
 ```
 
 ## 🧞 Commands
