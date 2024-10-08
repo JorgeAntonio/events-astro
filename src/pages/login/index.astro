@@ -1,10 +1,17 @@
 ---
-import GitHubIcon from "@assets/GitHubIcon.astro";
+import GitHubIcon from "@/assets/GitHubIcon.astro";
 import LoginLayout from "../../layouts/LoginLayout.astro";
+import { getSession } from "auth-astro/server";
+
+const session = await getSession(Astro.request);
+
+if (session) {
+  return Astro.redirect("/");
+}
 ---
 
 <LoginLayout>
-  <section class="bg-gray-50 dark:bg-primary">
+  <section class="bg-gray-100 dark:bg-gray-900">
     <div
       class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
     >
@@ -40,6 +47,11 @@ import LoginLayout from "../../layouts/LoginLayout.astro";
   </section>
   <script>
     const { signIn } = await import("auth-astro/client");
-    document.querySelector("#login").onclick = () => signIn("github");
+    const button = document.querySelector("#login");
+    if (button) {
+      button.addEventListener("click", async () => {
+        await signIn("github");
+      });
+    }
   </script>
 </LoginLayout>
