@@ -1,0 +1,99 @@
+---
+type Props = {};
+---
+
+<div>
+  <button
+    class="bg-primary hover:bg-gray-800 text-white font-bold py-2 px-4"
+    id="toggle-theme-btn"
+  >
+    Toggle Theme
+  </button>
+</div>
+
+<style>
+  /* Tema claro por defecto */
+  :root {
+    --color-background: #ffffff;
+    --color-text: #000000;
+    --color-primary: #3182ce;
+  }
+
+  /* Tema oscuro */
+  .theme-dark {
+    --color-background: #1a202c;
+    --color-text: #ffffff;
+    --color-primary: #f56565;
+  }
+
+  /* Aplicar los colores de los temas al body */
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+
+  /* Botón que cambiará según el color primario */
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .hover\:bg-gray-800:hover {
+    background-color: #2d3748;
+  }
+
+  .text-white {
+    color: #fff;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+</style>
+
+<script>
+  // Función para cargar el tema almacenado en localStorage al cargar la página
+  const loadTheme = () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.documentElement.classList.add(savedTheme); // Agregar la clase del tema guardado
+    }
+  };
+
+  // Manejador del clic para alternar entre temas
+  const handleClick = () => {
+    const root = document.documentElement;
+    const currentTheme = root.classList.contains("theme-dark")
+      ? "theme-dark"
+      : "theme-light";
+
+    // Alternar el tema
+    const newTheme =
+      currentTheme === "theme-dark" ? "theme-light" : "theme-dark";
+
+    // Remover el tema actual y aplicar el nuevo tema
+    root.classList.remove(currentTheme);
+    root.classList.add(newTheme);
+
+    // Guardar el nuevo tema en el localStorage
+    localStorage.setItem("theme", newTheme);
+  };
+
+  // Cargar el tema cuando se carga la página
+  loadTheme();
+
+  // Asignar el evento al botón después de que el DOM esté listo
+  const toggleThemeBtn = document.getElementById("toggle-theme-btn");
+  if (toggleThemeBtn) {
+    toggleThemeBtn.addEventListener("click", handleClick);
+  }
+</script>
